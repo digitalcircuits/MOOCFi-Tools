@@ -18,11 +18,11 @@ The MOOC.fi Java Programming course is a great course for anyone who is first le
 
 * **Cannot download suggested answers** - You are given a link to view the suggested answers but you cannot download them to a zip file
 
-* **No easy way to export "completed" answers** - You cannot easily "export" a JSON list of your completed and uncompleted assignments
+* **No easy way to export completed & uncompleted assignments** - You cannot easily "export" a JSON list of your completed and uncompleted assignments
 
-* **Cannot download your answers unless logging into your portal** - The MOOC.fi course is known for the java-programming where you view your assignments but many may not there is a seperate portal where you must login, find your assignment, scroll through all your failed submissions, click on your successful submission, then you can download
+* **Cannot download your answers unless logging into your portal** - The MOOC.fi website is known for the Java programming course (https://java-programming.mooc.fi/) but not many do not know there is a seperate GUI interface (https://tmc.mooc.fi/) where you must log in again to find your successfully completed assignments, download templates, view suggested answers, and more
 
-* **Cannot easily get a copy of the template** - If you mess up and want to start over again, you would need to close the assignment, then go to Options where you can download another copy of all uncompleted assignments, just to get a fresh start
+* **Cannot easily get a copy of the template** - If you mess up and want to start over again, you would need to close the assignment, then go to Options where you can download all uncompleted assignments again, just to get a fresh start for one
 
 ## Make Our Own API
 
@@ -69,7 +69,7 @@ First, you create a new MOOCFiRipper object, containing your username, password,
 
 ```
 
-Some functions require you to set "save" as True, indicating you wish to save your results to a file (assuming you also set a Path). Others require a Path to save those resuklts. You can check the MOOCFiRipper.py for all the commands and example.py for an example of how it was ran
+Some functions require you to set "save" as True, indicating you wish to save your results to a file (assuming you also set a Path). Others require a Path to save those resuklts. You can check the MOOCFiRipper.py for all the commands and example.py for an example of how some commands run.
 
 ### I just want to see the answers for the MOOC.fi Java Programming course, do you have them online?
 
