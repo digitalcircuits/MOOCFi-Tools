@@ -24,7 +24,7 @@ The MOOC.fi Java Programming course is a great course for anyone who is first le
 
 * **Cannot easily get a copy of the template** - If you mess up and want to start over again, you would need to close the assignment, then go to Options where you can download another copy of all uncompleted assignments, just to get a fresh start
 
-## No API? Let's create our own!
+## Make Our Own API
 
 As of August 2020, there is no easy API that we can use to fetch our completed projects or suggested templates. However, there is a frontend online interface we can scrape. Using BeautifulSoup4, a popular HTML parser, we can scrape the MOOC.fi website for what we need, allowing us to make functions easily.
 
