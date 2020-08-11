@@ -28,6 +28,26 @@ The MOOC.fi Java Programming course is a great course for anyone who is first le
 
 As of August 2020, there is no easy API that we can use to fetch our completed projects or suggested templates. However, there is a frontend online interface we can scrape. Using BeautifulSoup4, a popular HTML parser, we can scrape the MOOC.fi website for what we need, allowing us to make functions easily.
 
+## Requirements
+
+Ensure you have Python 3 installed. If you are on Windows and you installed Python from https://www.python.org/, you can check by opening up the CommandLine:
+```
+> python -V
+Python 3.7.7
+```
+
+If you are on Mac or Linux, you may need to type Python3 instead
+```
+> python3 -V
+Python 3.7.7
+```
+
+Once you ensured you have Python 3 installed, install all the dependancies:
+```
+python -m pip --no-cache-dir install -r requirements.txt
+```
+
+
 ## How To Use
 
 First, you create a new MOOCFiRipper object, containing your username, password, and [user-agent](https://www.google.com/search?&q=what+is+my+user+agent). Then run a command and see if its successful
