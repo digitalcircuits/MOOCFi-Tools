@@ -57,7 +57,7 @@ First, you create a new MOOCFiRipper object, containing your username, password,
 > a = MOOCFiRipper(username="john@smith.com", password="12345", user-agent="Chrome")
 > print(a)
 
-return {"status": 0, "msg": "Failed to Login to MOOCfi"}
+{"status": 0, "msg": "Failed to Login to MOOCfi"}
 ```
 
 *Example if Login Successful*:
