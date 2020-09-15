@@ -67,6 +67,36 @@ Then, go to the URL it specifies. Here are some screenshots:
 ![Panel](https://i.imgur.com/jLK8bal.png)
 ![Download](https://i.imgur.com/ON9Ga82.png)
 
+### Library method
+
+If you wish to perform a large amount of operations & are familiar with the Python programming language, you can import the MOOCFi Ripper to your script run whatever you wish. This is an example of how to run use it:
+
+```
+from MOOCFiRipper import MOOCFiRipper
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+#You can replace these with strings of your information
+username = os.environ.get("MOOCFI_USER")
+password = os.environ.get("MOOCFI_PASS")
+user_agent = os.environ.get("MOOCFI_AGENT")
+
+ObjT = MOOCFiRipper(username=username, password=password, user_agent=user_agent)
+
+#Save a zip file
+with open('Part01_33-Suggestion.zip', 'wb') as f:
+    f.write(ObjT.download_suggestion(exer_id=83137))
+
+#Get all assignments, regardless whether completed or not
+print(ObjT.retAllAssn())
+
+#Check to see if a specific assignment is completed
+print(ObjT.retCompAssnById(exer_id=83137))
+```
+
+You can find this in the "example.py" file in this repository.
+
 ### I just want to see the answers for the MOOC.fi Java Programming course, do you have them online?
 
 Sure! Check out https://github.com/moocfianswers/mooc.fi-java-programming-2020
