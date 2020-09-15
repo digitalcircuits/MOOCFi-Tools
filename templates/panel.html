@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <style>
+            .table-assn-show {
+                width: 90vw;
+                height: 90vh;
+                overflow-y: auto;
+                overflow-x: auto;
+                resize: both;
+                display: flex; 
+                justify-content: center; 
+            }
+  </style>
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/de4888948b.js" crossorigin="anonymous"></script>
+    <script src="./functions.js"></script>
+    <title>Panel - MOOCfi Tools</title>
+</head>
+<body>
+
+    <!-- Error Messages Start -->
+    <div class="serverStatuses">
+        <div id="server-not-login" style="display: none;">
+            <div class="alert alert-warning alert-dismissible fade show" style="margin-bottom: 0px;" role="alert">
+                <i style="color: #CCCC00;" class="fas fa-exclamation-triangle fa-1x"></i> <strong>Not Login In!</strong> Your session has seemed to have expired! You cannot use any of the websites functionality! <a href="/" style="margin-left: 10px;"type="button" class="btn btn-warning">Refresh</a>
+              </div>
+        </div>
+
+        <div id="server-external-error" style="display: none;">
+            <div class="alert alert-danger alert-dismissible fade show" style="margin-bottom: 0px;" role="alert">
+                <i style="color: #8B0000;" class="fas fa-exclamation-triangle fa-1x"></i> <strong>Server Error!</strong> <div id="server-error-msg" style="margin: 0; padding: 0; display: inline;" ></div> <a href="/" type="button" class="btn btn-danger">Refresh</a> 
+              </div>
+        </div>
+
+        <div id="server-not-online" style="display: none;">
+            <div class="alert alert-danger alert-dismissible fade show" style="margin-bottom: 0px;" role="alert">
+                <i style="color: #8B0000;" class="fas fa-exclamation-triangle fa-1x"></i> <strong>Server Offline!</strong> Unable to ping server at <div id="server-not-online-url" style="margin: 0; padding: 0; display: inline;"></div> - Check to see if the server is running! You will need to login again after the server restarted! <a href="/" style="margin-left: 10px;"type="button" class="btn btn-danger">Refresh</a> 
+              </div>
+        </div>
+    </div>
+    <!-- Error Messages End -->
+
+    <!-- NavBar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">MOOC.fi Tools</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/panel">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Java Submissions
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" rel="noopener noreferrer" target="_blank" href="https://tmc.mooc.fi/org/mooc/courses/600">Java Programming I (2020)</a>
+                <a class="dropdown-item" rel="noopener noreferrer" target="_blank" href="https://tmc.mooc.fi/org/mooc/courses/625">Java Programming II (2020)</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" rel="noopener noreferrer" target="_blank" href="https://tmc.mooc.fi/org/mooc">MOOC.Fi Courses (All)</a>
+              </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" rel="noopener noreferrer" target="_blank" href="https://java-programming.mooc.fi/">TMC Java Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" target="_blank" href="https://github.com/digitalcircuits/MOOCFi-Tools">Project GitHub</a>
+              </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <a class="btn btn-danger" href="/logout"> <i class="fas fa-sign-out-alt"></i> Log Out</a>
+          </form>
+        </div>
+      </nav>
+      <!-- NavBar End -->
+
+      <div class="container" style="display: flex; justify-content: center; margin-top: 50px;">
+        <img src="" id="statusID" style="height: 36px; width: 36px;"/>
+        <div id="statusText" style="font-size: 22px;"></div>
+      </div>
+
+      <div class="table-assn-show container" style="display: flex; justify-content: center;">
+        <table class="table" style="border-radius: 50px;" id="assn-table">
+          <thead class="thead-dark table-hover">
+            <tr>
+              <th scope="col">Assignment Number</th>
+              <th scope="col">Assignment Name</th>
+              <th scope="col">Download Template</th>
+              <th scope="col">Download Suggested</th>
+              <th scope="col">Download Completed</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+
+      </div>
+
+      <script>
+          /*
+            Make a scrollable table that fetches all assignments, then will start checking completed assignments (using the check each item)
+            There should be a button to download your answer & suggested answer
+            assignments completed will be in bold black and assignments not completed will be in red (with no checkbox)
+
+            Should include a column that takes you to the section in the book
+          */
+
+      </script>
+
+<script>
+        /* Every 30 seconds, ping the server*/
+        retAllAssn()
+        
+        setInterval(pingAlive, 30000);
+</script>
+</body>
+
+</html>

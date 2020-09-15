@@ -8,17 +8,14 @@ username = os.environ.get("MOOCFI_USER")
 password = os.environ.get("MOOCFI_PASS")
 user_agent = os.environ.get("MOOCFI_AGENT")
 
+ObjT = MOOCFiRipper(username=username, password=password, user_agent=user_agent)
 
-ObjT = MOOCFiRipper(username=username, password=password, user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101 Firefox/78.0")
+#Save a zip file
+with open('Part01_33-Suggestion.zip', 'wb') as f:
+    f.write(ObjT.download_suggestion(exer_id=83137))
 
-#Download your successful submission
-print(ObjT.download_your_success_submission(83213, os.getcwd()))
-
-#Retrieve all assignments
+#Get all assignments, regardless whether completed or not
 print(ObjT.retAllAssn())
 
-#Retrieve all assignments and save them in a path
-print(ObjT.retAllAssn(save=True, Path=os.getcwd()))
-
-#Download the suggested answer to your assignment
-print(ObjT.download_suggestion(exer_id=83213, Path=os.getcwd()))
+#Check to see if a specific assignment is completed
+print(ObjT.retCompAssnById(exer_id=83137))

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/de4888948b.js" crossorigin="anonymous"></script>
+    <script src="./functions.js"></script>
+    <title>Login - MOOC.fi Tools</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4 text-center">MOOC.fi Tools Panel</h1>
+            <p class="lead text-center">Before you can use MOOCFi Tools, you will need to login with your real MOOC.fi account</p>
+            <div class="alert alert-warning" role="alert">
+                <i style="margin-left: 5px;"class="fas fa-exclamation"></i> Nobody (except <a href="https://tmc.mooc.fi">MOOC.fi</a>) will see your password!
+            </div>
+            <form action="javascript:void(0);">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="login-moocfi-panel-email" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="login-moocfi-panel-pass">
+                </div>
+                <button class="btn btn-primary" onclick="login()">Submit</button>
+                <a rel="noopener noreferrer" target="_blank" href="https://tmc.mooc.fi/password_reset_keys/new"><button type="button" class="btn btn-info">Forgot MOOC.fi Password</button></a>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.mooc.fi/en/sign-up"><button type="button" class="btn btn-warning">Register New MOOC.fi Account</button></a>
+              </form>
+
+              <div class="status-login" style="margin-top: 50px; display: flex; justify-content: center; text-align: center;">
+                  <!-- Show This Icon When Loading-->
+                  <div class="spinner-icon-load" style="display: none;" id="logging-in-attempt">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Attempting to Login...</span>
+                    </div>
+                    <p class="lead text-center">Please Wait... Attempting to Login...</p>
+                 </div>
+
+                 <div class="spinner-icon-success" style="display: none" id="logging-in-success">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="p-1 mb-1 bg-success text-white">Success! Redirecting to Panel in 4 Seconds...</div>
+                 </div>
+
+                 <div class="spinner-icon-success" style="display: none" id="logging-in-failed">
+                    <i style="color: red; size: 15px;" class="fas fa-exclamation-triangle fa-2x"></i>
+                    <div class="p-1 mb-1 bg-danger text-white">Failed to Login to MOOCFi! <div id="text-error-msg-login"> </div></div>
+                 </div>
+              </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        login();
+    }
+    });
+
+    </script>
+</body>
+</html>

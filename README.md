@@ -18,15 +18,15 @@ The MOOC.fi Java Programming course is a great course for anyone who is first le
 
 * **Cannot download suggested answers** - You are given a link to view the suggested answers but you cannot download them to a zip file
 
-* **No easy way to export completed & uncompleted assignments** - You cannot easily "export" a JSON list of your completed and uncompleted assignments
+* **No easy way to export "completed" answers** - You cannot easily "export" a JSON list of your completed and uncompleted assignments
 
-* **Cannot download your answers unless logging into your portal** - The MOOC.fi website is known for the Java programming course (https://java-programming.mooc.fi/) but not many do not know there is a seperate GUI interface (https://tmc.mooc.fi/) where you must log in again to find your successfully completed assignments, download templates, view suggested answers, and more
+* **Cannot download your answers unless logging into your portal** - The MOOC.fi course is known for the java-programming where you view your assignments but many may not there is a seperate portal where you must login, find your assignment, scroll through all your failed submissions, click on your successful submission, then you can download
 
-* **Cannot easily get a copy of the template** - If you mess up and want to start over again, you would need to close the assignment, then go to Options where you can download all uncompleted assignments again, just to get a fresh start for one
+* **Cannot easily get a copy of the template** - If you mess up and want to start over again, you would need to close the assignment, then go to Options where you can download another copy of all uncompleted assignments, just to get a fresh start
 
-## Make Our Own API
+## No API? Let's create our own!
 
-As of August 2020, there is no easy API that we can use to fetch our completed projects or suggested templates. However, there is a frontend online interface we can scrape. Using BeautifulSoup4, a popular HTML parser, we can scrape the MOOC.fi website for what we need, allowing us to make functions easily.
+As of August 2020, there is no easy API that we can use to fetch our completed projects or suggested templates. However, there is a hidden JSON api that the TMC plugin uses and an old frontend system. Using BeautifulSoup4, a popular HTML parser, we can scrape the MOOC.fi website for what we need, allowing us to make functions easily.
 
 ## Requirements
 
@@ -50,26 +50,22 @@ python -m pip --no-cache-dir install -r requirements.txt
 
 ## How To Use
 
-First, you create a new MOOCFiRipper object, containing your username, password, and [user-agent](https://www.google.com/search?&q=what+is+my+user+agent). Then run a command and see if its successful
+There are two ways to use the API. The server method (good if you do not know Python) and the library method.
 
-*Example If Login Failed:*
+### Server method
+Since many students are learning Java, they may not have good Python experience. Therefore, there is a server.py script that, when ran, spins up a server you can use.
+
+After installing the requirements, you can type:
 ```
-> a = MOOCFiRipper(username="john@smith.com", password="12345", user-agent="Chrome")
-> print(a)
-
-{"status": 0, "msg": "Failed to Login to MOOCfi"}
+python server.py
 ```
+*Notice:* You can change the port in the script or in the .env file (once your renamed '.env-example' to '.env')
 
-*Example if Login Successful*:
-```
-> a = MOOCFiRipper(username="john@smith.com", password="12345", user-agent="Chrome")
-> print(a.retAllAssn())
+Then, go to the URL it specifies. Here are some screenshots:
 
-(output here)
-
-```
-
-Some functions require you to set "save" as True, indicating you wish to save your results to a file (assuming you also set a Path). Others require a Path to save those resuklts. You can check the MOOCFiRipper.py for all the commands and example.py for an example of how some commands run.
+![Login Page](https://i.imgur.com/nw70VmS.png)
+![Panel](https://i.imgur.com/jLK8bal.png)
+![Download](https://i.imgur.com/ON9Ga82.png)
 
 ### I just want to see the answers for the MOOC.fi Java Programming course, do you have them online?
 
