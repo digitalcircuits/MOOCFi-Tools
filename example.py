@@ -10,9 +10,9 @@ user_agent = os.environ.get("MOOCFI_AGENT")
 
 ObjT = MOOCFiRipper(username=username, password=password, user_agent=user_agent)
 
-#Save a zip file
+#Save the zip file to the disk
 with open('Part01_33-Suggestion.zip', 'wb') as f:
-    f.write(ObjT.download_suggestion(exer_id=83137))
+    f.write(ObjT.download_suggestion(exer_id=83137)['object'].read())
 
 #Get all assignments, regardless whether completed or not
 print(ObjT.retAllAssn())
