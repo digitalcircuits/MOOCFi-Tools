@@ -52,7 +52,7 @@ python -m pip --no-cache-dir install -r requirements.txt
 
 There are two ways to use the API. The server method (good if you do not know Python) and the library method.
 
-### Server method
+### Frontend method
 Since many students are learning Java, they may not have good Python experience. Therefore, there is a server.py script that, when ran, spins up a server you can use.
 
 After installing the requirements, you can type:
@@ -84,18 +84,33 @@ user_agent = os.environ.get("MOOCFI_AGENT")
 
 ObjT = MOOCFiRipper(username=username, password=password, user_agent=user_agent)
 
-#Save a zip file
+#Save the zip file to the disk
 with open('Part01_33-Suggestion.zip', 'wb') as f:
-    f.write(ObjT.download_suggestion(exer_id=83137))
+    f.write(ObjT.download_suggestion(exer_id=83137)['object'].read())
 
 #Get all assignments, regardless whether completed or not
 print(ObjT.retAllAssn())
 
 #Check to see if a specific assignment is completed
 print(ObjT.retCompAssnById(exer_id=83137))
-```
 
+```
 You can find this in the "example.py" file in this repository.
+
+For a more detailed example, check out "example2.py"
+
+### Postman/API method
+
+Of course, the frontend is just a visual style to interact with the API. If you do not wish to use the frontend, you can interact with the server with the API.
+
+We have a Postman collection you can import and use but of course, you can use external libraries and software such as cURL or wget if you wish. 
+
+1. Install [Postman](https://www.postman.com/) if you have not already
+2. Open up Postman and follow the instructions on first boot (you do not need an account to use their software although they may ask)
+3. Click "Import" on the top left of the program and select the "*MOOCfiTools.postman_collection.json*" file. This will import a [Postman Collection](https://www.postman.com/collection/) you can use
+
+![Postman](https://i.imgur.com/YPsBITV.png)
+
 
 ### I just want to see the answers for the MOOC.fi Java Programming course, do you have them online?
 
