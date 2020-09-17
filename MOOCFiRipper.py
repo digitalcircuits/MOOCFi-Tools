@@ -27,15 +27,18 @@ class MOOCFiRipper():
         headers={'Cookie': getSessionCookie, 'User-Agent': self.user_agent, "location": "https://tmc.mooc.fi/login"},
         data={"session[login]": self.username, "session[password]": self.password, "commit": "Sign+in", "utf8": getUTFCheck, "authenticity_token": getPageAuthToken},timeout=5
         )
-
-        #Check to see if we actually logged in
-        checkAuthy = self.s.get("https://tmc.mooc.fi/api/v8/org/mooc/courses/java-programming-i/exercises/", headers={'User-Agent': self.user_agent}, timeout=5).json()
-        if "errors" in checkAuthy:
-            #We failed to Log In
+        
+        try:
+            #Check to see if we actually logged in
+            checkAuthy = self.s.get("https://tmc.mooc.fi/api/v8/org/mooc/courses/java-programming-i/exercises/", headers={'User-Agent': self.user_agent}, timeout=5).json()
+            if "errors" in checkAuthy:
+                #We failed to Log In
+                self.goodLog = False
+            else:
+                #Login was successful
+                self.goodLog = True
+        except Exception as e:
             self.goodLog = False
-        else:
-            #Login was successful
-            self.goodLog = True
     
     def _ValidCourse(self, exer_id):
         #Check to see if the exercise id is valid. We only want exercise ID's from the Java Programming 2020 course
