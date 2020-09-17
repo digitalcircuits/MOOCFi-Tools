@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "ddaf9e79-f773-4c1b-9fd5-808c33a6a7d8",
+		"name": "MOOC.fi Tools",
+		"description": "A collection of methods you can use for the MOOC.fi tools library\r\n\r\nCurious? See the GitHub repo at:\r\n```\r\nhttps://redirct.page.link/MOOCfiToolsGitHub\r\n```",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "",
+							"description": "Your MOOC.fi username",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"description": "Your MOOC.fi password",
+							"type": "text"
+						},
+						{
+							"key": "user_agent",
+							"value": "",
+							"description": "A user agent (used for logging in)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5492/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"login"
+					]
+				},
+				"description": "Login and get your token (this is a must to use any other API)"
+			},
+			"response": []
+		},
+		{
+			"name": "Check Login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/checkLogin?token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"checkLogin"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						}
+					]
+				},
+				"description": "Check if a token is successful"
+			},
+			"response": []
+		},
+		{
+			"name": "Ping Server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/pingServer?token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"pingServer"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						}
+					]
+				},
+				"description": "Check the status of the server"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/logout?token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"logout"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						}
+					]
+				},
+				"description": "After you are finished with your session, send a reques with your token to logout and delete your token (thus ending your session)"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Assignments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/retAllAssn?token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"retAllAssn"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						}
+					]
+				},
+				"description": "Fetch all assignments, whether completed or not"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Completed Assignments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/retCompAssn?token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"retCompAssn"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						}
+					]
+				},
+				"description": "Fetch all completed assignments. \r\n\r\n**Notice:** This will take awhile since it will check every ID to see if it is completed or not"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve An Assignment By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/retCompAssnById?token&exer_id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"retCompAssnById"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						},
+						{
+							"key": "exer_id",
+							"value": null,
+							"description": "Exercise ID (its a 5 digit number)"
+						}
+					]
+				},
+				"description": "Check the status of a specific assignment by exercise ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Download Assignment Suggestion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/download_suggestion?token&exer_id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"download_suggestion"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						},
+						{
+							"key": "exer_id",
+							"value": null,
+							"description": "Exercise ID (its a 5 digit number)"
+						}
+					]
+				},
+				"description": "Download a suggested answer of a given assignment ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Download Assignment Template",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/download_template?token&exer_id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"download_template"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						},
+						{
+							"key": "exer_id",
+							"value": null,
+							"description": "Exercise ID (its a 5 digit number)"
+						}
+					]
+				},
+				"description": "Download an assignment's template, given the exercise ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Download Assignment Successful Submission",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5492/download_success?token&exer_id",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5492",
+					"path": [
+						"download_success"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": null,
+							"description": "Token given after successfully logging in"
+						},
+						{
+							"key": "exer_id",
+							"value": null,
+							"description": "Exercise ID (its a 5 digit number)"
+						}
+					]
+				},
+				"description": "Download your successful submission of an assignment, given the exercise ID"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
